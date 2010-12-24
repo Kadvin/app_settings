@@ -1,0 +1,55 @@
+<%content_for 'page_css' do%>
+  h2.setting-name {
+    color: #C00;
+    font-size: 200%;
+    font-family: Georgia,Palatino,"Times New Roman",Times,serif;
+    font-weight: normal;
+    margin: 25px 0 0; 
+  }
+  
+  div.description {
+    margin: 5px 20px;
+    color: #444; 
+  }
+  
+  p.title {
+    margin: 10px 0 !important; 
+  }
+  
+  textarea.textarea {
+    height: 150px !important;
+    width: 100%;
+    display: block; 
+  }
+<%end%>
+
+<h1>
+  新建配置项
+</h1>
+<%form_for :setting, :url =>settings_path do |f|%>
+  <div class='form-area'>
+    <p class='title'>
+      <label>
+        配置名称
+        <%= f.text_field :key, :class => 'textbox'%>
+      </label>
+    </p>
+    <p class='title'>
+      <label>
+        值
+        <%= f.text_field :value, :class => 'textbox'%>
+      </label>
+    </p>
+    <p class='title'>
+      <label>
+        描述
+        <%= f.text_area :description, :class => 'textarea'%>
+      </label>
+    </p>
+    <br />
+    <p class='buttons'>
+      <input class="button" name="commit" type="submit" value="创建" />
+    </p>
+  </div>
+
+<%end%>

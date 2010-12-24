@@ -1,0 +1,42 @@
+<%content_for 'page_css' do%>
+  h2.setting-name {
+    color: #C00;
+    font-size: 200%;
+    font-family: Georgia,Palatino,"Times New Roman",Times,serif;
+    font-weight: normal;
+    margin: 25px 0 0; 
+  }
+  
+  div.description {
+    margin: 5px 20px;
+    color: #444; 
+  }
+  div.description p {
+    margin: 0 0 10px; 
+  }
+<%end%>
+
+<h1>编辑配置项</h1>
+
+<h2 class='setting-name'><%=@setting.key%></h2>
+<div class='description'><%=@setting.description%></div>
+<%form_for :setting, :url => setting_path(@setting), :html => { :method => :put } do |f|%>
+  <div class='form-area'>
+    <p class='title'>
+      <label>
+        配置值
+        <%if @setting.protected?%>
+          <%=f.password_field :value, :class => 'textbox'%>
+        <%else%>
+          <%=f.text_field :value, :class => 'textbox'%>
+        <%end%>
+      </label>
+    </p>
+    <br />
+    <p class='buttons'><input class="button" name="commit" type="submit" value="保存" /></p>
+  </div>
+<%end%>
+<p class='buttons'>
+  系统依赖其中的一些关键参数. 删除这些参数可能会带来潜在的危险，甚至导致系统崩溃.
+  <%= link_to "了解啦，照删不误.", setting_path(@setting), :method => :delete%>
+</p>

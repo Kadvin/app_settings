@@ -1,0 +1,37 @@
+<%content_for 'page_css' do%>
+  table#settings_index span.label {
+    color: #666;
+    font-size: 1.2em; 
+  }
+  table#settings_index div.nest-padding {
+    width: 35px;
+    height: 10px;
+    float: left; 
+  }
+  table#settings_index tr.spacer td {
+    background: #EAEAEA;
+    height: 3px;
+    padding: 0; 
+  }
+  p.new a {
+    color: #000;
+    border: 1px solid #ddf;
+    padding: 6px;
+    text-decoration: none; 
+  }
+  p.new a:hover {
+    background: #efefff; 
+  }
+<%end%>
+    
+<h1>配置项</h1>
+<table class='index' id='settings_index'>
+  <tr>
+    <th class='key'>选项名称</th>
+    <th class='value'>值</th>
+  </tr>
+  <%@settings.each do |key, node|%>
+    <%= render_node(key, node, :reset_depth => true)%>
+  <%end%>
+</table>
+<p class='new'><a href="/settings/new">新建配置项</a></p>

@@ -1,0 +1,20 @@
+AppSettings
+===========
+
+General Settings
+
+
+Example
+=======
+
+Setting['key.to.setting']              # => get value(String)
+Setting['key.to.setting'] = "my value" # => set value(Any, String as Result)
+
+Configure a router item for manage those settings by your web:
+
+YourApp::Application.routes.draw
+  resources :settings
+end
+
+
+Copyright (c) 2010 Kadvin, released under the MIT license
